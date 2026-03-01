@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Laptop Treasure Hunt Map</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        h1 { color: #333; }
+        form { margin-bottom: 20px; }
+        input, select { padding: 5px; margin: 5px 0; }
+        button { padding: 5px 10px; cursor: pointer; }
+        .laptop { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>💎 Laptop Treasure Hunt Map</h1>
+<p><strong>Find your perfect laptop based on your budget and needs.</strong></p>
+<p style="color: red; font-size: 14px;">
+⚠ This is a laptop suggestion website only.  
+We do not sell laptops. This platform is not a buying or e-commerce website.
+</p>
+    <form method="POST">
+        <label>Budget (₹):</label><br>
+        <input type="number" name="budget" required><br>
+
+        <label>RAM (GB):</label><br>
+        <input type="number" name="ram" required><br>
+
+        <label>Processor:</label><br>
+        <select name="processor">
+            <option value="i3">i3</option>
+            <option value="i5">i5</option>
+            <option value="i7">i7</option>
+        </select><br>
+
+        <label>GPU:</label><br>
+        <select name="gpu">
+            <option value="integrated">Integrated</option>
+            <option value="gtx 1650">GTX 1650</option>
+            <option value="rtx 3050">RTX 3050</option>
+        </select><br><br>
+
+        <button type="submit">Suggest Laptop</button>
+    </form>
+
+    <h2>Suggestions:</h2>
+
+    {% if suggestions %}
+        {% for laptop in suggestions %}
+            <div class="laptop">
+                <strong>{{ laptop["Name"] }}</strong><br>
+Price: ₹{{ laptop["Price"] }}<br>
+RAM: {{ laptop["RAM"] }}GB<br>
+Processor: {{ laptop["Processor"] }}<br>
+GPU: {{ laptop["GPU"] }}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No laptops found. Try changing filters.</p>
+    {% endif %}
+
+</body>
+</html>
